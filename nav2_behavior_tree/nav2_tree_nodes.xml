@@ -33,6 +33,11 @@
     </Action>
 
     <Action ID="RandomCrawl"/>
+    <Action ID="TruncatePath">
+      <input_port name="input_path">Input path</input_port>
+      <output_port name="output_path">Truncated path</output_port>
+      <input_port name="distance"/>
+    </Action>
 
     <Action ID="Spin">
       <input_port name="spin_dist">Spin distance</input_port>
@@ -46,7 +51,8 @@
     <Condition ID="GoalReached">
         <input_port name="goal">Destination</input_port>
     </Condition>
-
+    <Condition ID="GoalUpdated">
+    </Condition>
     <Condition ID="IsStuck"/>
 
     <Condition ID="TransformAvailable">
@@ -66,6 +72,10 @@
     <!-- ############################### DECORATOR NODES ############################## -->
     <Decorator ID="RateController">
       <input_port name="hz">Rate</input_port>
+    </Decorator>
+    <Decorator ID="GoalUpdater">
+        <input_port name="input_goal">New Goal</input_port>
+        <output_port name="output_goal">New Goal</output_port>
     </Decorator>
 
     <Decorator ID="DistanceController">
